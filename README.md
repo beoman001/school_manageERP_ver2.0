@@ -5,7 +5,7 @@ Welcome to the **Ultimate School ERP System**—a modern, responsive, and featur
 ---
 
 ## 🚀 Live Demo
-Check out the live deployment here: **[Insert your Render URL here]**
+Check out the live deployment here: https://school-manageerp-ver2-0-1.onrender.com ****
 
 ---
 
