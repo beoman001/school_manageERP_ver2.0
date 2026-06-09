@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manage Parents</title>
+</head>
+<body>
+
+<h1>Manage Parents</h1>
+
+<a href="/add-parent">
+
+Add Parent
+
+</a>
+
+<br><br>
+
+<table border="1">
+
+<tr>
+
+<th>ID</th>
+
+<th>Name</th>
+
+<th>Student Roll No</th>
+
+<th>Phone</th>
+
+<th>Email</th>
+
+<th>Action</th>
+
+</tr>
+
+{% for parent in parents %}
+
+<tr>
+
+<td>{{ parent.id }}</td>
+
+<td>{{ parent.name }}</td>
+
+<td>{{ parent.student_roll_no }}</td>
+
+<td>{{ parent.phone }}</td>
+
+<td>{{ parent.email }}</td>
+
+<td>
+
+<a href="/edit-parent/{{ parent.id }}">
+Edit
+</a>
+
+|
+
+<a href="/delete-parent/{{ parent.id }}">
+Delete
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>

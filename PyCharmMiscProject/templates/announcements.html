@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>School Announcements</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>ERP PORTAL</h2>
+        <ul>
+            <li><a href="/{{ session['user_role'].lower() if session.get('user_role') else '' }}">⬅ Back to Dashboard</a></li>
+
+            {% if session.get('user_role') in ['Admin', 'Principal'] %}
+            <li><a href="/create-announcement">➕ Create Notice</a></li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <div class="content">
+        <h1>Official Announcements</h1>
+
+        {% for announcement in announcements %}
+        <div class="card" style="border-left: 4px solid var(--neon-blue); margin-bottom: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h2 style="color: var(--neon-blue); margin-bottom: 5px;">{{ announcement.title }}</h2>
+
+                {% if session.get('user_role') in ['Admin', 'Principal'] %}
+                <a href="/delete-announcement/{{ announcement.id }}">
+                    <button style="border-color: #ff4757; color: #ff4757; padding: 5px 10px; font-size: 0.8rem;">Delete</button>
+                </a>
+                {% endif %}
+            </div>
+
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">
+                Broadcasted by: <strong>{{ announcement.sender }}</strong>
+            </p>
+            <p style="font-size: 1.1rem; line-height: 1.6;">{{ announcement.message }}</p>
+        </div>
+        {% else %}
+        <div class="card">
+            <p style="text-align: center; color: var(--text-muted);">No active announcements at this time.</p>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</body>
+</html>

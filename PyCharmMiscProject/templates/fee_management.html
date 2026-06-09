@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fee Management</title>
+</head>
+
+<body>
+
+<h1>Fee Management</h1>
+
+<form action="/save-fee" method="POST">
+
+<input
+type="text"
+name="roll_no"
+placeholder="Roll No">
+
+<br><br>
+
+<input
+type="text"
+name="student_name"
+placeholder="Student Name">
+
+<br><br>
+
+<input
+type="text"
+name="student_class"
+placeholder="Class">
+
+<br><br>
+
+<input
+type="number"
+name="total_fee"
+placeholder="Total Fee">
+
+<br><br>
+
+<input
+type="number"
+name="paid_fee"
+placeholder="Paid Fee">
+
+<br><br>
+
+<button type="submit">
+
+Save Fee
+
+</button>
+
+</form>
+
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Roster Directory</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>ERP ADMIN</h2>
+        <ul>
+            <li><a href="/admin">⬅ Back to Dashboard</a></li>
+            <li><a href="/add-student">➕ Register New Student</a></li>
+        </ul>
+
+        <div class="theme-selector">
+            <button class="theme-btn theme-light" onclick="setTheme('light')" title="Light Mode"></button>
+            <button class="theme-btn theme-dark" onclick="setTheme('dark')" title="Dark Mode"></button>
+            <button class="theme-btn theme-neon" onclick="setTheme('neon')" title="Neon Mode"></button>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1>Registered Students Directory</h1>
+
+        <div class="card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll No</th>
+                        <th>Student Name</th>
+                        <th>Class & Division</th>
+                        <th>Parent Contact</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                    <tr>
+                        <td style="color: var(--accent-main); font-weight: bold;">{{ student.roll_no }}</td>
+                        <td style="font-weight: 600;">{{ student.name }}</td>
+                        <td>Class {{ student.student_class }} ({{ student.division }})</td>
+                        <td>{{ student.parent_name }} ({{ student.parent_phone }})</td>
+                        <td>
+                            <a href="/edit-student/{{ student.id }}"><button style="padding: 4px 10px; font-size: 0.8rem; margin-right: 5px;">Edit</button></a>
+                            <a href="/delete-student/{{ student.id }}"><button style="padding: 4px 10px; font-size: 0.8rem; border-color: #ff4757; color: #ff4757;">Remove</button></a>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5" style="text-align: center; color: var(--text-muted);">No student profiles registered yet. Click "Register New Student" to add one.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

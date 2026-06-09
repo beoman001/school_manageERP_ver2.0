@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Certificate Requests</title>
+    <link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<h1>Certificate Requests</h1>
+
+<table border="1">
+
+<tr>
+
+<th>Name</th>
+<th>Roll No</th>
+<th>Type</th>
+<th>Status</th>
+<th>Action</th>
+
+</tr>
+
+{% for r in requests %}
+
+<tr>
+
+<td>{{ r.student_name }}</td>
+
+<td>{{ r.roll_no }}</td>
+
+<td>{{ r.request_type }}</td>
+
+<td>{{ r.status }}</td>
+
+<td>
+
+<a href="/approve-request/{{ r.id }}">
+Approve
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>

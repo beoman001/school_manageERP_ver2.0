@@ -1,0 +1,32 @@
+<h2>Bus Fee Settings</h2>
+
+<form action="/update-bus-fee-settings" method="POST">
+
+<label>0-5 KM</label>
+<input type="number" name="fee_5km" value="{{ settings.fee_5km }}">
+
+<br><br>
+
+<label>5-10 KM</label>
+<input type="number" name="fee_10km" value="{{ settings.fee_10km }}">
+
+<br><br>
+
+<label>10-15 KM</label>
+<input type="number" name="fee_15km" value="{{ settings.fee_15km }}">
+
+<br><br>
+
+<label>15-20 KM</label>
+<input type="number" name="fee_20km" value="{{ settings.fee_20km }}">
+
+<br><br>
+
+<label>Above 20 KM</label>
+<input type="number" name="fee_above20km" value="{{ settings.fee_above20km }}">
+
+<br><br>
+
+<button type="submit">Save</button>
+
+</form>

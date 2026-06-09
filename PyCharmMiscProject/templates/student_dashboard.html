@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animation.css') }}">
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>STUDENT PORTAL</h2>
+        <ul>
+            <li><a href="/student">Dashboard Home</a></li>
+            <li><a href="/biodata">My Profile</a></li>
+            <li><a href="/class-materials">Study Materials</a></li>
+            <li><a href="/my-attendance-calendar">My Attendance</a></li>
+            <li><a href="/view-marks">Exam Results</a></li>
+            <li><a href="/my-requests">Document Requests</a></li>
+            <li><a href="/chat-portal">Chat & Connect</a></li>
+            <li style="margin-top: 30px;"><a href="/logout" style="color: var(--danger-color);">Disconnect / Logout</a></li>
+        </ul>
+
+        <div class="theme-selector">
+            <button class="theme-btn theme-light" onclick="setTheme('light')" title="Light Mode"></button>
+            <button class="theme-btn theme-dark" onclick="setTheme('dark')" title="Dark Mode"></button>
+            <button class="theme-btn theme-neon" onclick="setTheme('neon')" title="Neon Mode"></button>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1>Welcome back, {{ session.get('user_name', 'Student') }}!</h1>
+
+        <div class="card animate-fade-up" style="background: rgba(102, 126, 234, 0.1); border-color: var(--accent-main);">
+            <strong style="color: var(--accent-main);">Campus Update:</strong> You have successfully logged into the digital campus. Have a great day of learning!
+        </div>
+
+        <div class="dashboard-grid" style="margin-top: 30px;">
+
+            <div class="card animate-fade-up delay-1" style="flex: 1; text-align: center;">
+                <h3 style="color: var(--text-muted); font-size: 0.9rem;">My Profile</h3>
+                <div style="font-size: 3.5rem; margin-bottom: 15px;" class="animate-float">👤</div>
+                <a href="/biodata"><button class="animate-jelly" style="width: 100%;">View Biodata</button></a>
+            </div>
+
+            <div class="card animate-fade-up delay-2" style="flex: 1; text-align: center;">
+                <h3 style="color: var(--text-muted); font-size: 0.9rem;">Academics</h3>
+                <div style="font-size: 3.5rem; margin-bottom: 15px;" class="animate-float">📚</div>
+                <a href="/class-materials"><button class="animate-jelly" style="background: var(--accent-secondary); width: 100%;">Study Materials</button></a>
+            </div>
+
+            <div class="card animate-fade-up delay-3" style="flex: 1; text-align: center;">
+                <h3 style="color: var(--text-muted); font-size: 0.9rem;">Performance</h3>
+                <div style="font-size: 3.5rem; margin-bottom: 15px;" class="animate-float">🎯</div>
+                <a href="/view-marks"><button class="animate-jelly" style="background: var(--success-color); width: 100%;">Check Grades</button></a>
+            </div>
+
+        </div>
+
+        <div class="card animate-fade-up delay-3" style="margin-top: 30px;">
+            <h2>Quick Actions</h2>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <a href="/my-attendance-calendar"><button class="animate-jelly" style="background: transparent; border: 2px solid var(--accent-main); color: var(--accent-main);">View Attendance Calendar</button></a>
+                <a href="/chat-portal"><button class="animate-jelly" style="background: transparent; border: 2px solid var(--accent-secondary); color: var(--accent-secondary);">Message a Teacher</button></a>
+                <a href="/request-tc"><button class="animate-jelly" style="background: transparent; border: 2px solid var(--danger-color); color: var(--danger-color);">Request Formal Document</button></a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

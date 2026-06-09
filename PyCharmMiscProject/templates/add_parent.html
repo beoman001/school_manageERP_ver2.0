@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add Parent</title>
+    <link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<h1>Add Parent</h1>
+
+<form action="/save-parent" method="POST">
+
+<label>Parent Name</label>
+
+<input type="text" name="name">
+
+<br><br>
+
+<label>Student Roll Number</label>
+
+<input type="text" name="student_roll_no">
+
+<br><br>
+
+<label>Phone</label>
+
+<input type="text" name="phone">
+
+<br><br>
+
+<label>Email</label>
+
+<input type="email" name="email">
+
+<br><br>
+
+<label>Password</label>
+
+<input type="password" name="password">
+
+<br><br>
+
+<button type="submit">
+
+Add Parent
+
+</button>
+
+</form>
+
+</body>
+</html>

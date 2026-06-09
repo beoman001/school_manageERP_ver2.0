@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+<title>My Fee Status</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<h1>Fee Status</h1>
+
+<table border="1">
+
+<tr>
+
+<th>Name</th>
+
+<th>Total</th>
+
+<th>Paid</th>
+
+<th>Balance</th>
+
+<th>Status</th>
+
+</tr>
+
+{% for fee in fees %}
+
+<tr>
+
+<td>{{ fee.student_name }}</td>
+
+<td>{{ fee.total_fee }}</td>
+
+<td>{{ fee.paid_fee }}</td>
+
+<td>{{ fee.balance_fee }}</td>
+
+<td>{{ fee.status }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+
+</html>

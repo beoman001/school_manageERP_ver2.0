@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>School Chat</title>
+    <link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<h1>School Chat</h1>
+
+<form action="/send-message"
+method="POST">
+
+<input
+type="text"
+name="sender"
+placeholder="Sender">
+
+<br><br>
+
+<input
+type="text"
+name="receiver"
+placeholder="Receiver">
+
+<br><br>
+
+<textarea
+name="message"
+placeholder="Message">
+</textarea>
+
+<br><br>
+
+<button type="submit">
+
+Send
+
+</button>
+
+</form>
+
+</body>
+</html>

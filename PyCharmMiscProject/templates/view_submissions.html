@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+<title>Submissions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<h1>Assignment Submissions</h1>
+
+<table border="1">
+
+<tr>
+
+<th>Student</th>
+
+<th>Assignment</th>
+
+<th>File</th>
+
+</tr>
+
+{% for s in submissions %}
+
+<tr>
+
+<td>{{ s.student_name }}</td>
+
+<td>{{ s.assignment_title }}</td>
+
+<td>
+
+<a href="{{ url_for('static',
+filename='uploads/' + s.filename) }}"
+download>
+
+Download
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>

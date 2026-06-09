@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Bus Fees</title>
+        <link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<h1>Bus Fee Records</h1>
+
+<table border="1">
+
+<tr>
+    <th>Student</th>
+    <th>Distance</th>
+    <th>Monthly Fee</th>
+</tr>
+
+{% for f in fees %}
+
+<tr>
+
+<td>{{ f.student_name }}</td>
+
+<td>{{ f.distance }} KM</td>
+
+<td>₹ {{ f.fee }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+
+</html>

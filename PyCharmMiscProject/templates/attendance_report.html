@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Attendance Audit Logs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>ERP {{ session['user_role'].upper() if session.get('user_role') else 'PORTAL' }}</h2>
+        <ul>
+            <li><a href="/{{ session['user_role'].lower() if session.get('user_role') else '' }}">⬅ Back to Dashboard</a></li>
+
+            {% if session.get('user_role') in ['Admin', 'Principal'] %}
+            <li><a href="/manage-students">Manage Students</a></li>
+            {% endif %}
+
+            {% if session.get('user_role') == 'Teacher' %}
+            <li><a href="/mark-attendance-bulk">➕ Bulk Attendance</a></li>
+            {% endif %}
+        </ul>
+
+        <div class="theme-selector">
+            <button class="theme-btn theme-light" onclick="setTheme('light')" title="Light Mode"></button>
+            <button class="theme-btn theme-dark" onclick="setTheme('dark')" title="Dark Mode"></button>
+            <button class="theme-btn theme-neon" onclick="setTheme('neon')" title="Neon Mode"></button>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1>Master Attendance Logs</h1>
+
+        <div class="card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Roll Number</th>
+                        <th>Class & Div</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for record in records %}
+                    <tr>
+                        <td>{{ record.date }}</td>
+                        <td style="color: var(--accent-main); font-weight: bold;">{{ record.roll_no }}</td>
+                        <td>{{ record.student_class }} - {{ record.division }}</td>
+                        <td>
+                            {% if record.status == 'Present' %}
+                                <span style="color: #00ff88;">🟢 Present</span>
+                            {% elif record.status == 'Absent' %}
+                                <span style="color: #ff4757;">🔴 Absent</span>
+                            {% else %}
+                                <span style="color: #ffaa00;">🟠 Half-Day</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="4" style="text-align: center; color: var(--text-muted);">No attendance logs found in the database.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

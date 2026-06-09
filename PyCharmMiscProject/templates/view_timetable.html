@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timetable</title>
+
+</head>
+
+<body>
+
+<h1>School Timetable</h1>
+
+<table border="1">
+
+<tr>
+
+<th>Class</th>
+<th>Day</th>
+<th>P1</th>
+<th>P2</th>
+<th>P3</th>
+<th>P4</th>
+<th>P5</th>
+<th>P6</th>
+<th>P7</th>
+<th>P8</th>
+
+</tr>
+
+{% for t in timetables %}
+
+<tr>
+
+<td>{{ t.student_class }}</td>
+
+<td>{{ t.day }}</td>
+
+<td>{{ t.period1 }}</td>
+
+<td>{{ t.period2 }}</td>
+
+<td>{{ t.period3 }}</td>
+
+<td>{{ t.period4 }}</td>
+
+<td>{{ t.period5 }}</td>
+
+<td>{{ t.period6 }}</td>
+
+<td>{{ t.period7 }}</td>
+
+<td>{{ t.period8 }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+
+</html>

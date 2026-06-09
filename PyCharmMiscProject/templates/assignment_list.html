@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assignments</title>
+</head>
+
+<body>
+
+<h1>Assignments</h1>
+
+<table border="1">
+
+<tr>
+
+<th>Title</th>
+
+<th>Subject</th>
+
+<th>Due Date</th>
+
+<th>Submit</th>
+
+</tr>
+
+{% for a in assignments %}
+
+<tr>
+
+<td>{{ a.title }}</td>
+
+<td>{{ a.subject }}</td>
+
+<td>{{ a.due_date }}</td>
+
+<td>
+
+<a href="/submit-assignment">
+
+Submit
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Academic Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animation.css') }}">
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>ERP {{ session['user_role'].upper() if session.get('user_role') else 'PORTAL' }}</h2>
+        <ul>
+            <li><a href="/{{ session['user_role'].lower() if session.get('user_role') else '' }}">⬅ Back to Dashboard</a></li>
+
+            {% if session.get('user_role') in ['Teacher', 'Admin', 'Principal'] %}
+            <li><a href="/enter-marks">➕ Enter New Marks</a></li>
+            {% endif %}
+        </ul>
+
+        <div class="theme-selector">
+            <button class="theme-btn theme-light" onclick="setTheme('light')" title="Light Mode"></button>
+            <button class="theme-btn theme-dark" onclick="setTheme('dark')" title="Dark Mode"></button>
+            <button class="theme-btn theme-neon" onclick="setTheme('neon')" title="Neon Mode"></button>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1>Academic Results & Scores</h1>
+
+        <div class="card animate-fade-up">
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Review recent examination performance and term grades below.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll No</th>
+                        <th>Student Name</th>
+                        <th>Subject</th>
+                        <th>Examination Name</th>
+                        <th>Marks Scored</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for mark in marks %}
+                    <tr class="animate-fade-up delay-1">
+                        <td style="color: var(--text-muted);">{{ mark.roll_no }}</td>
+                        <td style="font-weight: 600;">{{ mark.student_name }}</td>
+                        <td>{{ mark.subject }}</td>
+                        <td>{{ mark.exam_name }}</td>
+                        <td style="color: var(--accent-main); font-weight: bold; font-size: 1.2rem;">{{ mark.marks }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5" style="text-align: center; color: var(--text-muted); padding: 40px;">No examination marks have been published yet.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

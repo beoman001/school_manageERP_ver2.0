@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Admin</title>
+</head>
+<body>
+    <h2>Create a New Admin Account</h2>
+    <form action="/add-new-admin" method="POST">
+        <label>Name:</label>
+        <input type="text" name="name" required><br><br>
+
+        <label>Email (Username):</label>
+        <input type="email" name="email" required><br><br>
+
+        <label>Password:</label>
+        <input type="password" name="password" required><br><br>
+
+        <button type="submit">Save Admin</button>
+    </form>
+</body>
+</html>

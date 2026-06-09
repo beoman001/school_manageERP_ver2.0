@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Messages</title>
+</head>
+
+<body>
+
+<h1>Chat Messages</h1>
+
+{% for chat in chats %}
+
+<p>
+
+<b>
+{{ chat.sender }}
+</b>
+
+➡
+
+<b>
+{{ chat.receiver }}
+</b>
+
+:
+
+{{ chat.message }}
+
+</p>
+
+<hr>
+
+{% endfor %}
+
+</body>
+</html>

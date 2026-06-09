@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School ERP - Welcome</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animation.css') }}">
+
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+
+    <style>
+        /* Specific layout tweaks just for the login screen to make it perfectly centered */
+        .login-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .logo-placeholder {
+            width: 70px;
+            height: 70px;
+            background: var(--accent-main);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+            color: #ffffff;
+            font-size: 28px;
+            font-weight: 700;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s;
+        }
+
+        .login-box:hover .logo-placeholder {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .forgot-link {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            margin-top: -10px;
+            margin-bottom: 25px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .forgot-link:hover {
+            color: var(--accent-main);
+        }
+
+        .input-group {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-wrapper">
+
+        <div class="login-box animate-fade-up">
+
+            <div class="logo-placeholder">🎓</div>
+            <h2 style="margin-bottom: 5px; font-size: 1.8rem;">Welcome Back</h2>
+            <p style="color: var(--text-muted); margin-bottom: 30px; font-size: 0.95rem;">Please sign in to your digital campus.</p>
+
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                  <div style="background: rgba(245, 101, 101, 0.1); border: 1px solid var(--danger-color); color: var(--danger-color); padding: 10px; border-radius: 12px; font-size: 0.9rem; margin-bottom: 20px;">
+                      {{ message }}
+                  </div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+
+            <form action="/login" method="POST">
+
+                <div class="input-group">
+                    <label>Account Type</label>
+                    <select name="role" required>
+                        <option value="" disabled selected>Select your role...</option>
+                        <option value="Admin">System Administrator</option>
+                        <option value="Principal">Principal</option>
+                        <option value="Teacher">Faculty / Teacher</option>
+                        <option value="Student">Student</option>
+                        <option value="Parent">Parent / Guardian</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Email Address / ID</label>
+                    <input type="text" name="username" placeholder="name@school.edu" required autocomplete="off">
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="••••••••" required>
+                </div>
+
+                <a href="#" class="forgot-link">Forgot password?</a>
+
+                <button type="submit" class="animate-jelly" style="width: 100%;">Sign In</button>
+            </form>
+        </div>
+
+        <div class="theme-selector animate-fade-up delay-2" style="border: none; margin-top: 10px;">
+            <button class="theme-btn theme-light" onclick="setTheme('light')" title="Light Mode"></button>
+            <button class="theme-btn theme-dark" onclick="setTheme('dark')" title="Dark Mode"></button>
+            <button class="theme-btn theme-neon" onclick="setTheme('neon')" title="Neon Mode"></button>
+        </div>
+
+    </div>
+
+</body>
+</html>

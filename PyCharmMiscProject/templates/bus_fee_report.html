@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Bus Fee Report</title>
+    <link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<h1>Bus Fee Report</h1>
+
+<table border="1">
+
+<tr>
+
+<th>Student</th>
+<th>Route</th>
+<th>Distance</th>
+<th>Fee</th>
+
+</tr>
+
+{% for bus in buses %}
+
+<tr>
+
+<td>{{ bus.student_name }}</td>
+
+<td>{{ bus.route_name }}</td>
+
+<td>{{ bus.distance }}</td>
+
+<td>{{ bus.fee }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+<table border="1">
+    <tr>
+        <th>Student Name</th>
+        <th>Route</th>
+        <th>Distance</th>
+        <th>Fee</th>
+    </tr>
+
+    {% for fee in fees %}
+    <tr>
+        <td>{{ fee.student_name }}</td>
+        <td>{{ fee.route_name }}</td>
+        <td>{{ fee.distance }}</td>
+        <td>{{ fee.fee }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

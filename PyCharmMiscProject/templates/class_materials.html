@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Study Materials</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animation.css') }}">
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>STUDENT PORTAL</h2>
+        <ul>
+            <li><a href="/student">⬅ Back to Dashboard</a></li>
+        </ul>
+
+        <div class="theme-selector">
+            <button class="theme-btn theme-light" onclick="setTheme('light')" title="Light Mode"></button>
+            <button class="theme-btn theme-dark" onclick="setTheme('dark')" title="Dark Mode"></button>
+            <button class="theme-btn theme-neon" onclick="setTheme('neon')" title="Neon Mode"></button>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1>Class Materials & Lectures</h1>
+
+        <div class="dashboard-grid">
+            <div class="card animate-fade-up delay-1" style="flex: 1;">
+                <h2 style="color: var(--accent-main);">📚 Study Notes</h2>
+                {% for note in notes %}
+                <div style="padding: 15px; border-bottom: 2px solid var(--surface-border); display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <strong style="display: block; font-size: 1.1rem;">{{ note.title }}</strong>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;">Subject: {{ note.subject }}</span>
+                    </div>
+                    <a href="{{ url_for('static', filename='uploads/' + note.filename) }}" target="_blank">
+                        <button class="animate-jelly" style="padding: 8px 16px; font-size: 0.85rem;">Download</button>
+                    </a>
+                </div>
+                {% else %}
+                <p style="color: var(--text-muted); text-align: center; padding: 20px;">No notes uploaded for your class yet.</p>
+                {% endfor %}
+            </div>
+
+            <div class="card animate-fade-up delay-2" style="flex: 1;">
+                <h2 style="color: var(--accent-secondary);">🎥 Video Lectures</h2>
+                {% for video in videos %}
+                <div style="padding: 15px; border-bottom: 2px solid var(--surface-border);">
+                    <strong style="display: block; font-size: 1.1rem; margin-bottom: 10px;">{{ video.title }}</strong>
+                    <video width="100%" controls style="border-radius: 12px; outline: none; border: 2px solid var(--surface-border);">
+                        <source src="{{ url_for('static', filename='uploads/' + video.filename) }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <span style="color: var(--text-muted); font-size: 0.85rem; display: block; margin-top: 10px;">By: {{ video.teacher_name }}</span>
+                </div>
+                {% else %}
+                <p style="color: var(--text-muted); text-align: center; padding: 20px;">No video lectures available right now.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

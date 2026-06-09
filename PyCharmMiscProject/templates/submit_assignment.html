@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Submit Assignment</title>
+</head>
+
+<body>
+
+<h1>Submit Assignment</h1>
+
+<form
+action="/save-submission"
+method="POST"
+enctype="multipart/form-data">
+
+<input
+type="text"
+name="student_name"
+placeholder="Student Name">
+
+<br><br>
+
+<input
+type="text"
+name="assignment_title"
+placeholder="Assignment Title">
+
+<br><br>
+
+<input
+type="file"
+name="file">
+
+<br><br>
+
+<button type="submit">
+
+Submit Assignment
+
+</button>
+
+</form>
+
+</body>
+</html>

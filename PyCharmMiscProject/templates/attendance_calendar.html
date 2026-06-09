@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Attendance Calendar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
+
+    <style>
+        /* Custom tweaks to make the calendar match our dark neon theme */
+        .fc { background: rgba(0,0,0,0.4); border-radius: 12px; padding: 20px; }
+        .fc-theme-standard td, .fc-theme-standard th { border-color: rgba(255,255,255,0.1); }
+        .fc-col-header-cell-cushion, .fc-daygrid-day-number { color: var(--text-primary); text-decoration: none; }
+        .fc-button-primary { background-color: var(--neon-blue) !important; border: none !important; color: #000 !important; font-weight: bold;}
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                height: 650,
+                events: [
+                    // Loop through the records Flask sends us and create calendar events!
+                    {% for record in records %}
+                    {
+                        title: '{{ record.status }}',
+                        start: '{{ record.date }}',
+                        // Color logic based on status
+                        {% if record.status == "Present" %}
+                            backgroundColor: '#00ff88', borderColor: '#00ff88', textColor: '#000'
+                        {% elif record.status == "Absent" %}
+                            backgroundColor: '#ff4757', borderColor: '#ff4757', textColor: '#fff'
+                        {% else %}
+                            backgroundColor: '#ffaa00', borderColor: '#ffaa00', textColor: '#000'
+                        {% endif %}
+                    },
+                    {% endfor %}
+                ]
+            });
+            calendar.render();
+        });
+    </script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>STUDENT PORTAL</h2>
+        <ul>
+            <li><a href="/student">⬅ Back to Dashboard</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h1>My Attendance Calendar</h1>
+
+        <div class="card" style="display: flex; gap: 20px; justify-content: center; margin-bottom: 20px; padding: 10px;">
+            <span style="color: #00ff88;">🟢 Present</span>
+            <span style="color: #ff4757;">🔴 Absent</span>
+            <span style="color: #ffaa00;">🟠 Half-Day</span>
+        </div>
+
+        <div class="card">
+            <div id="calendar"></div>
+        </div>
+    </div>
+</body>
+</html>

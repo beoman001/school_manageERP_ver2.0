@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parent Dashboard</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+<meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animation.css') }}">
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<h2>🏫 School ERP</h2>
+
+<a href="/parent">Dashboard</a>
+<a href="/view-bus-fee">Bus Fee</a>
+<a href="/announcements">Announcements</a>
+<a href="/">Logout</a>
+
+</div>
+
+<div class="content">
+
+<div class="notice">
+👨‍👩‍👧 Welcome Parent
+</div>
+
+<h1>Parent Dashboard</h1>
+
+<div class="card">
+<h2>🚌 Bus Fee Details</h2>
+</div>
+
+<div class="card">
+<h2>📢 School Notices</h2>
+</div>
+
+<div class="card">
+<h2>📋 Student Progress</h2>
+</div>
+
+</div>
+<div class="theme-selector">
+            <button class="theme-btn theme-light" onclick="setTheme('light')" title="Light Mode"></button>
+            <button class="theme-btn theme-dark" onclick="setTheme('dark')" title="Dark Mode"></button>
+            <button class="theme-btn theme-neon" onclick="setTheme('neon')" title="Neon Mode"></button>
+        </div>
+</body>
+
+</html>

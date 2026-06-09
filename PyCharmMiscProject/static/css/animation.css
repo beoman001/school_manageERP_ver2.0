@@ -1,0 +1,53 @@
+/* ==========================================================
+   BOUNCY & PLAYFUL ANIMATIONS
+========================================================== */
+
+/* 1. Spring Pop-In (For Cards loading on the page) */
+@keyframes springPop {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+    60% {
+        opacity: 1;
+        transform: scale(1.02) translateY(-5px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* 2. Jelly Hover (Add to buttons for a squishy click effect) */
+@keyframes jelly {
+    0%, 100% { transform: scale(1, 1); }
+    25% { transform: scale(0.9, 1.1); }
+    50% { transform: scale(1.1, 0.9); }
+    75% { transform: scale(0.95, 1.05); }
+}
+
+/* 3. Floating (For status badges or empty state images) */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* --- UTILITY CLASSES TO APPLY --- */
+.animate-fade-up {
+    animation: springPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    opacity: 0;
+}
+
+.animate-jelly:hover {
+    animation: jelly 0.5s ease;
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Delays for making lists pop in one by one */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }

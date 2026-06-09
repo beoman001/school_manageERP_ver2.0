@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+<title>Timetable Management</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<h1>Create Timetable</h1>
+
+<form action="/save-timetable"
+method="POST">
+
+<input
+type="text"
+name="student_class"
+placeholder="Class">
+
+<br><br>
+
+<input
+type="text"
+name="day"
+placeholder="Day">
+
+<br><br>
+
+<input
+type="text"
+name="period1"
+placeholder="Period 1">
+
+<br><br>
+
+<input
+type="text"
+name="period2"
+placeholder="Period 2">
+
+<br><br>
+
+<input
+type="text"
+name="period3"
+placeholder="Period 3">
+
+<br><br>
+
+<input
+type="text"
+name="period4"
+placeholder="Period 4">
+
+<br><br>
+
+<input
+type="text"
+name="period5"
+placeholder="Period 5">
+
+<br><br>
+
+<input
+type="text"
+name="period6"
+placeholder="Period 6">
+
+
+<br><br>
+
+<input
+type="text"
+name="period7"
+placeholder="Period 7">
+
+<br><br>
+
+<input
+type="text"
+name="period8"
+placeholder="Period 8">
+
+<br><br>
+
+<button type="submit">
+
+Save Timetable
+
+</button>
+
+</form>
+
+</body>
+</html>

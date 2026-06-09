@@ -1,0 +1,23 @@
+<h2>Upload Class Material</h2>
+<form action="/upload-material" method="POST" enctype="multipart/form-data">
+    <label>Type:</label>
+    <select name="type">
+        <option value="note">Document/Note</option>
+        <option value="video">Video Lecture</option>
+    </select><br><br>
+
+    <label>Class:</label>
+    <input type="text" name="student_class" required placeholder="e.g. 10">
+    <label>Division:</label>
+    <input type="text" name="division" required placeholder="e.g. A"><br><br>
+
+    <label>Subject:</label>
+    <input type="text" name="subject" required>
+    <label>Title:</label>
+    <input type="text" name="title" required><br><br>
+
+    <label>File:</label>
+    <input type="file" name="file" required><br><br>
+
+    <button type="submit">Upload File</button>
+</form>

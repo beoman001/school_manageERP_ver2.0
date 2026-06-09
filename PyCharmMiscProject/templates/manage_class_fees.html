@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Set Class Fees</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>ERP ADMIN</h2>
+        <ul>
+            <li><a href="/admin">⬅ Back to Dashboard</a></li>
+            <li><a href="/fee-report">View Fee Collections</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h1>Define Class Fees</h1>
+
+        <div class="card">
+            <h2>Set/Update Fee for a Class</h2>
+            <form action="/manage-class-fees" method="POST">
+                <input type="text" name="student_class" placeholder="Enter Class (e.g., 10, 11, 12)" required>
+                <input type="number" name="base_fee" placeholder="Total Annual Fee Amount" required>
+                <button type="submit">Save Fee Structure</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>Current Fee Structure</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Class</th>
+                        <th>Base Fee Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for fee in class_fees %}
+                    <tr>
+                        <td style="color: var(--neon-blue); font-weight: bold;">Class {{ fee.student_class }}</td>
+                        <td style="color: var(--neon-green);">₹{{ fee.base_fee }}</td>
+                    </tr>
+                    {% else %}
+                    <tr><td colspan="2">No class fees defined yet.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Edit Student</title>
+    <link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<h1>Edit Student</h1>
+
+<form action="/update-student/{{ student.id }}"
+method="POST">
+
+Name
+
+<input type="text"
+name="name"
+value="{{ student.name }}">
+
+<br><br>
+
+Roll Number
+
+<input type="text"
+name="roll_no"
+value="{{ student.roll_no }}">
+
+<br><br>
+
+Class
+
+<input type="text"
+name="student_class"
+value="{{ student.student_class }}">
+
+<br><br>
+
+<button>
+Update Student
+</button>
+
+</form>
+
+</body>
+</html>

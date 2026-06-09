@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Student</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>ERP ADMIN</h2>
+        <ul>
+            <li><a href="/admin">⬅ Back to Dashboard</a></li>
+            <li><a href="/manage-students">View All Students</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h1>Register New Student</h1>
+
+        <div class="card" style="max-width: 600px;">
+            <form action="/save-student" method="POST">
+                <label>Full Name:</label>
+                <input type="text" name="name" required>
+
+                <div style="display: flex; gap: 15px;">
+                    <div style="width: 50%;">
+                        <label>Roll Number:</label>
+                        <input type="text" name="roll_no" required>
+                    </div>
+                    <div style="width: 50%;">
+                        <label>Class & Division:</label>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="text" name="student_class" placeholder="Class" required>
+                            <input type="text" name="division" placeholder="Div" required>
+                        </div>
+                    </div>
+                </div>
+
+                <label>Parent Name:</label>
+                <input type="text" name="parent_name" required>
+
+                <label>Parent Phone:</label>
+                <input type="text" name="parent_phone" required>
+
+                <label>Student Email (For Login):</label>
+                <input type="email" name="email" required>
+
+                <label>Password:</label>
+                <input type="password" name="password" required>
+
+                <button type="submit" style="margin-top: 15px;">Register Student</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

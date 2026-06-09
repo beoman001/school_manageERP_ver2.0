@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Teacher</title>
+</head>
+<body>
+
+<h1>Add Teacher</h1>
+
+<form action="/save-teacher" method="POST">
+
+<label>Name</label>
+<input type="text" name="name">
+
+<br><br>
+
+<label>Teacher ID</label>
+<input type="text" name="teacher_id">
+
+<br><br>
+
+<label>Subject</label>
+<input type="text" name="subject">
+
+<br><br>
+
+<label>Phone</label>
+<input type="text" name="phone">
+
+<br><br>
+
+<label>Email</label>
+<input type="email" name="email">
+
+<br><br>
+
+<label>Password</label>
+<input type="password" name="password">
+
+<br><br>
+
+<button type="submit">
+
+Add Teacher
+
+</button>
+
+</form>
+
+</body>
+</html>

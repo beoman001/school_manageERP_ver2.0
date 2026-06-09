@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Command Center</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animation.css') }}">
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>ERP ADMIN</h2>
+        <ul>
+            <li><a href="/admin">Dashboard Overview</a></li>
+            <li><a href="/manage-students">Manage Students</a></li>
+            <li><a href="/manage-teachers">Manage Faculty</a></li>
+            <li><a href="/fee-report">Finance & Fees</a></li>
+            <li><a href="/bus-fee-settings">Transport Settings</a></li>
+            <li><a href="/attendance-report">Attendance Logs</a></li>
+            <li><a href="/certificate-requests">Document Requests</a></li>
+            <li style="margin-top: 30px;"><a href="/logout" style="color: var(--danger-color);">Disconnect / Logout</a></li>
+        </ul>
+
+        <div class="theme-selector">
+            <button class="theme-btn theme-light" onclick="setTheme('light')" title="Light Mode"></button>
+            <button class="theme-btn theme-dark" onclick="setTheme('dark')" title="Dark Mode"></button>
+            <button class="theme-btn theme-neon" onclick="setTheme('neon')" title="Neon Mode"></button>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1>Command Center Overview</h1>
+
+        <div class="card animate-fade-up">
+            <strong style="color: var(--accent-main);">System Status:</strong> Optimal. Welcome back, Administrator.
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="card animate-fade-up delay-1">
+                <h3 style="color: var(--text-muted); font-size: 0.9rem;">Total Enrolled</h3>
+                <h1 style="color: var(--accent-main); font-size: 2.5rem; margin-bottom: 0;" class="animate-float">{{ student_count }}</h1>
+                <p>Active Students</p>
+            </div>
+
+            <div class="card animate-fade-up delay-2">
+                <h3 style="color: var(--text-muted); font-size: 0.9rem;">Total Faculty</h3>
+                <h1 style="color: var(--success-color); font-size: 2.5rem; margin-bottom: 0;" class="animate-float">{{ teacher_count }}</h1>
+                <p>Active Teachers</p>
+            </div>
+
+            <div class="card animate-fade-up delay-3">
+                <h3 style="color: var(--text-muted); font-size: 0.9rem;">Total Parents</h3>
+                <h1 style="color: var(--accent-secondary); font-size: 2.5rem; margin-bottom: 0;" class="animate-float">{{ parent_count }}</h1>
+                <p>Registered Guardians</p>
+            </div>
+        </div>
+
+        <div class="card animate-fade-up delay-2" style="margin-top: 30px;">
+            <h2>Quick Directives</h2>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <a href="/add-student"><button class="animate-jelly">+ Add Student</button></a>
+                <a href="/add-teacher"><button class="animate-jelly">+ Add Faculty</button></a>
+                <a href="/create-announcement"><button class="animate-jelly" style="background: var(--accent-secondary);">Broadcast Notice</button></a>
+            </div>
+        </div>
+
+        <div class="card animate-fade-up delay-3" style="margin-top: 30px;">
+            <h2>Recent System Alerts</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Alert Type</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Just Now</td>
+                        <td style="color: var(--accent-main); font-weight: bold;">System</td>
+                        <td>Routine database backup completed successfully.</td>
+                        <td><span style="color: var(--success-color); font-weight: bold;">Clear</span></td>
+                    </tr>
+                    <tr>
+                        <td>2 Hours Ago</td>
+                        <td style="color: var(--accent-secondary); font-weight: bold;">Finance</td>
+                        <td>New fee structure applied to Grade 10 division.</td>
+                        <td><span style="color: var(--success-color); font-weight: bold;">Clear</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</body>
+</html>

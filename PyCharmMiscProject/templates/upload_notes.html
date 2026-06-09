@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+<title>Upload Notes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<h1>Upload Study Notes</h1>
+
+<form
+action="/save-notes"
+method="POST"
+enctype="multipart/form-data">
+
+<input
+type="text"
+name="subject"
+placeholder="Subject">
+
+<br><br>
+
+<input
+type="text"
+name="title"
+placeholder="Title">
+
+<br><br>
+
+<input
+type="file"
+name="file">
+
+<br><br>
+
+<button type="submit">
+
+Upload
+
+</button>
+
+</form>
+
+</body>
+
+</html>

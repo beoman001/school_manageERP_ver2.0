@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enter Marks</title>
+
+</head>
+
+<body>
+
+<h1>Enter Student Marks</h1>
+
+<form action="/save-marks"
+method="POST">
+
+<input
+type="text"
+name="roll_no"
+placeholder="Roll Number">
+
+<br><br>
+
+<input
+type="text"
+name="student_name"
+placeholder="Student Name">
+
+<br><br>
+
+<input
+type="text"
+name="subject"
+placeholder="Subject">
+
+<br><br>
+
+<input
+type="text"
+name="exam_name"
+placeholder="Exam Name">
+
+<br><br>
+
+<input
+type="number"
+name="marks"
+placeholder="Marks">
+
+<br><br>
+
+<button type="submit">
+
+Save Marks
+
+</button>
+
+</form>
+
+</body>
+
+</html>

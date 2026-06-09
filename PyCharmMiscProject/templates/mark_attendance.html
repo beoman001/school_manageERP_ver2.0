@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mark Individual Attendance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>ERP FACULTY</h2>
+        <ul>
+            <li><a href="/teacher">⬅ Back to Dashboard</a></li>
+            <li><a href="/mark-attendance-bulk">Switch to Bulk Entry</a></li>
+            <li><a href="/attendance-report">View Master Logs</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h1>Single Student Attendance</h1>
+
+        <div class="card" style="max-width: 500px;">
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Use this form to log attendance for a single student. For faster entry, use the <a href="/mark-attendance-bulk">Bulk Entry tool</a>.</p>
+
+            <form action="/save-attendance" method="POST">
+                <label>Student Roll Number:</label>
+                <input type="text" name="roll_no" placeholder="e.g., 101A" required>
+
+                <label>Student Full Name:</label>
+                <input type="text" name="student_name" placeholder="John Doe" required>
+
+                <label>Date:</label>
+                <input type="date" name="date" required>
+
+                <label>Status:</label>
+                <select name="status" required>
+                    <option value="" disabled selected>Select Status...</option>
+                    <option value="Present">Present</option>
+                    <option value="Absent">Absent</option>
+                    <option value="Half-Day">Half-Day Leave</option>
+                </select>
+
+                <button type="submit" style="margin-top: 20px; width: 100%;">Submit Record</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

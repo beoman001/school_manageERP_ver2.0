@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Request TC</title>
+    <link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<h1>Transfer Certificate Request</h1>
+
+<form action="/submit-tc-request"
+method="POST">
+
+<input
+type="text"
+name="student_name"
+placeholder="Student Name">
+
+<br><br>
+
+<input
+type="text"
+name="roll_no"
+placeholder="Roll Number">
+
+<br><br>
+
+<button type="submit">
+
+Request TC
+
+</button>
+
+</form>
+
+</body>
+</html>

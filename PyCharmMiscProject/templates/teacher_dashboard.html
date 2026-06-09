@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teacher Dashboard</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<h2>🏫 School ERP</h2>
+
+<a href="/teacher">Dashboard</a>
+<a href="/mark-attendance">Attendance</a>
+<a href="/enter-marks">Marks</a>
+<a href="/create-assignment">Assignments</a>
+<a href="/create-announcement">Announcements</a>
+<a href="/">Logout</a>
+
+</div>
+
+<div class="content">
+
+<div class="notice">
+📚 Welcome Teacher
+</div>
+
+<h1>Teacher Dashboard</h1>
+
+<div class="card">
+<h2>📝 Mark Attendance</h2>
+</div>
+
+<div class="card">
+<h2>📊 Enter Marks</h2>
+</div>
+
+<div class="card">
+<h2>📖 Assignments & Notes</h2>
+</div>
+
+
+<div class="theme-selector">
+            <button class="theme-btn theme-light" onclick="setTheme('light')" title="Light Mode"></button>
+            <button class="theme-btn theme-dark" onclick="setTheme('dark')" title="Dark Mode"></button>
+            <button class="theme-btn theme-neon" onclick="setTheme('neon')" title="Neon Mode"></button>
+        </div>
+</body>
+
+</html>

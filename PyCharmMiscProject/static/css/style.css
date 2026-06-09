@@ -1,0 +1,186 @@
+/* ==========================================================
+   MODERN EDTECH ERP - 3 THEMES (LIGHT, DARK, NEON)
+========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* --- 1. THEME VARIABLES --- */
+
+/* THEME 1: Playful Light Mode */
+:root {
+    --bg-main: #f8f9fe;
+    --surface-panel: #ffffff;
+    --surface-border: #e2e8f0;
+    --text-primary: #2d3748;
+    --text-muted: #718096;
+    --accent-main: #667eea; /* Friendly Indigo */
+    --accent-hover: #5a67d8;
+    --shadow-soft: 0 10px 25px -5px rgba(102, 126, 234, 0.15);
+    --shadow-hover: 0 20px 25px -5px rgba(102, 126, 234, 0.25);
+    --input-bg: #f7fafc;
+    --radius-card: 24px;
+    --radius-button: 9999px; /* Pill shape */
+}
+
+/* THEME 2: Deep Space Dark Mode */
+[data-theme="dark"] {
+    --bg-main: #1a202c;
+    --surface-panel: #2d3748;
+    --surface-border: #4a5568;
+    --text-primary: #f7fafc;
+    --text-muted: #a0aec0;
+    --accent-main: #9f7aea; /* Soft Purple */
+    --accent-hover: #b794f4;
+    --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.7);
+    --input-bg: #1a202c;
+}
+
+/* THEME 3: Neon Green Hacker Mode */
+[data-theme="neon"] {
+    --bg-main: #050505;
+    --surface-panel: #111111;
+    --surface-border: #39ff14; /* Electric Neon Green */
+    --text-primary: #ffffff;
+    --text-muted: #888888;
+    --accent-main: #39ff14;
+    --accent-hover: #32e011;
+    --shadow-soft: 0 5px 15px rgba(57, 255, 20, 0.1);
+    --shadow-hover: 0 10px 30px rgba(57, 255, 20, 0.4);
+    --input-bg: #000000;
+}
+
+/* --- 2. GLOBAL STYLES --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-main);
+    color: var(--text-primary);
+    min-height: 100vh;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    overflow-x: hidden;
+}
+
+h1, h2, h3 { font-weight: 700; color: var(--text-primary); margin-bottom: 1rem; }
+a { color: var(--accent-main); text-decoration: none; font-weight: 600; transition: 0.2s; }
+a:hover { opacity: 0.8; }
+
+/* --- 3. SIDEBAR & NAVIGATION --- */
+.sidebar {
+    width: 280px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: var(--surface-panel);
+    border-right: 2px solid var(--surface-border);
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+.sidebar h2 {
+    text-align: center;
+    padding: 30px 20px;
+    margin: 0;
+    color: var(--accent-main);
+    font-size: 1.5rem;
+}
+
+.sidebar ul { flex: 1; padding: 0 15px; }
+.sidebar li { list-style: none; margin-bottom: 8px; }
+.sidebar a {
+    display: block;
+    padding: 14px 20px;
+    color: var(--text-muted);
+    border-radius: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar a:hover {
+    background: var(--accent-main);
+    color: var(--bg-main);
+    transform: translateX(5px);
+}
+
+.content { margin-left: 280px; padding: 50px; }
+
+/* --- 4. BUBBLE CARDS --- */
+.card, .login-box {
+    background: var(--surface-panel);
+    border: 2px solid var(--surface-border);
+    border-radius: var(--radius-card);
+    padding: 30px;
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 30px;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s, background-color 0.4s, border-color 0.4s;
+}
+
+.card:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: var(--shadow-hover);
+}
+
+.login-box { width: 100%; max-width: 400px; margin: 10vh auto; text-align: center; }
+
+/* --- 5. FORMS & PILL BUTTONS --- */
+label { font-weight: 600; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 8px; display: block; }
+
+input, select, textarea {
+    width: 100%;
+    padding: 14px 20px;
+    margin-bottom: 24px;
+    background: var(--input-bg);
+    border: 2px solid var(--surface-border);
+    border-radius: 16px;
+    color: var(--text-primary);
+    font-family: inherit;
+    transition: all 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: var(--accent-main);
+    outline: none;
+    box-shadow: 0 0 0 4px var(--shadow-soft);
+}
+
+/* Specific fix for Neon Theme text colors on buttons */
+[data-theme="neon"] button {
+    color: #000000;
+}
+
+button {
+    background: var(--accent-main);
+    color: #ffffff;
+    border: none;
+    padding: 14px 28px;
+    border-radius: var(--radius-button);
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+button:hover { background: var(--accent-hover); transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+button:active { transform: translateY(1px); }
+
+/* --- 6. CLEAN TABLES --- */
+table { width: 100%; border-collapse: separate; border-spacing: 0 10px; }
+th { padding: 10px 20px; color: var(--text-muted); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; text-align: left;}
+td { padding: 20px; background: var(--input-bg); border-top: 2px solid var(--surface-border); border-bottom: 2px solid var(--surface-border);}
+tr td:first-child { border-left: 2px solid var(--surface-border); border-top-left-radius: 16px; border-bottom-left-radius: 16px; }
+tr td:last-child { border-right: 2px solid var(--surface-border); border-top-right-radius: 16px; border-bottom-right-radius: 16px; }
+
+/* --- 7. THEME TOGGLES --- */
+.theme-selector { padding: 20px; display: flex; gap: 15px; justify-content: center; }
+.theme-btn { width: 35px; height: 35px; border-radius: 50%; border: 3px solid var(--surface-panel); cursor: pointer; padding: 0; transition: transform 0.2s; }
+.theme-btn:hover { transform: scale(1.15); }
+
+/* The specific colors for the 3 toggle circles */
+.theme-light { background: #667eea; }
+.theme-dark { background: #9f7aea; }
+.theme-neon { background: #39ff14; box-shadow: 0 0 10px #39ff14;}

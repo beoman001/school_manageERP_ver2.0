@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Create Assignment</title>
+    <link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<h1>Create Assignment</h1>
+
+<form action="/save-assignment"
+method="POST">
+
+<input
+type="text"
+name="title"
+placeholder="Assignment Title">
+
+<br><br>
+
+<input
+type="text"
+name="subject"
+placeholder="Subject">
+
+<br><br>
+
+<input
+type="date"
+name="due_date">
+
+<br><br>
+
+<button type="submit">
+
+Create Assignment
+
+</button>
+
+</form>
+
+</body>
+</html>
