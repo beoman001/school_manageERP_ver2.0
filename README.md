@@ -49,5 +49,4 @@ Get your development server running locally in under 2 minutes:
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git)
-   cd YOUR_REPO_NAME
+   git clone https://github.com/beoman001/school_manageERP_ver2.0.git
